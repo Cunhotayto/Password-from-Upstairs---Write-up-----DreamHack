@@ -106,4 +106,4 @@ except Exception as e:
     print(e)
 ```
 
-Nếu bạn đã mắc công lướt đến đây thì mình sẽ chỉ bạn cách tính nhanh ra vị trí `v2` mà không cần dò. Thì bài này sẽ chia ra làm 2 stack là stack main và stack sub_1348. Khi chạy stack sub_1348 thì con trỏ đã chạy qua v2 thì nếu mà nó không return về stack main thì v2 sẽ có vị trí là rsp-0x70. Nhưng nó đã quay về stack main thì nó sẽ bị dời xuống 0x10 vì stack sub_1348 cũng có saved rbp và saved rip. Nên khi return về main thì rsp phải tạo thêm 0x10 nữa để cho saved rbp và rip của stack sub_1348 nên v2 mới có địa chỉ là rsp-0x80.
+Nếu bạn đã mắc công lướt đến đây thì mình sẽ chỉ bạn cách tính nhanh ra vị trí `v2` mà không cần dò. Thì bài này sẽ chia ra làm 2 stack là stack main và stack sub_1348. Khi chạy stack sub_1348 thì con trỏ đã chạy qua v2 thì nếu mà nó không return về stack main thì v2 sẽ có vị trí là rsp-0x70. Nhưng nó đã quay về stack main thì nó sẽ bị dời xuống 0x10 vì stack sub_1348 cũng có saved rbp và saved rip. Nên khi return về main thì rsp phải chạy lên thêm 0x10 nữa để cho saved rbp và rip của stack sub_1348 nên v2 mới có địa chỉ là rsp-0x80.
